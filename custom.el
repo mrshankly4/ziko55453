@@ -11,3 +11,23 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+;; Disable files backup function
+(setq make-backup-files nil)
+
+
+;; Config Tab
+;;;; This will force Tab to be just oneTab.
+(global-set-key (kbd "TAB")'self-insert-command)
+(global-set-key (kbd "RET") 'newline-and-indent)
+(global-whitespace-mode t)
+
+(setq indent-line-function 'insert-tab)
+(setq default-tab-width 4)
+(setq backward-delete-char-untabify-method nil)
+(defun my-c-mode-hook ()
+ (setq c-basic-offset 4
+       c-indent-level 4
+       c-default-style "bsd"))
+(add-hook 'c-mode-common-hook 'my-c-mode-hook)
